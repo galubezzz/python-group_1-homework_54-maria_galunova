@@ -1,15 +1,17 @@
 import React from 'react';
-import './AddTaskForm.css;
+import './AddTaskForm.css';
 
-function AddTaskForm(props) {
+function AddTaskForm() {
     return (
-        <form>
-          <div className="form-group">
-            <label for="taskInput">Task</label>
-            <input type="text" className="form-control" id="taskInput" placeholder="Do something">
-            <small id="emailHelp" className="form-text text-muted">Start with writing down your task.</small>
-          </div>
-        </form>
+        <div className='container'>
+            <form>
+                <div className="form-group">
+                    <label htmlFor="taskInput">Task</label>
+                    <input type="text" className="form-control" id="taskInput" placeholder="Do something"/>
+                    <small id="emailHelp" className="form-text text-muted">Start with writing down your task.</small>
+                </div>
+            </form>
+        </div>
     );
 }
 
