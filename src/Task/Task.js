@@ -5,8 +5,10 @@ function Task(props) {
     return(
         <div className='container'>
             <div>
-                {props.text}
+                -{props.text}-
             </div>
         </div>
     );
 }
+
+export default Task;
