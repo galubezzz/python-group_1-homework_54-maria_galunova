@@ -15,12 +15,21 @@ class App extends Component {
   };
 
    addTask = (inputText) => {
-       this.setState({currentTask: {text: inputText}});
+       this.setState({currentTask: {text: inputText.target.value}});
+       console.log(this.state.currentTask);
    };
 
-   displayTask = () => {
-
+   addTaskToList = () => {
+        const newTask = this.state.currentTask;
+        const tasks = [...this.state.tasks];
+        tasks.push({id: tasks.length, text: newTask.text});
+        this.setState({tasks});
+        console.log(tasks);
    };
+
+   removeTaskFromList = () => {
+
+   }
 
   render() {
       const tasks = (
@@ -35,7 +44,7 @@ class App extends Component {
           );
     return (
       <div className="App">
-        <AddTaskForm function={this.addTask}/>
+        <AddTaskForm functionOnChange={this.addTask} functionOnClick={this.addTaskToList}/>
           {tasks}
       </div>
     );
