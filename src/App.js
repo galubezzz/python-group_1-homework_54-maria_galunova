@@ -14,8 +14,8 @@ class App extends Component {
       currentTask: {text: ''}
   };
 
-   addTask = (inputText) => {
-       this.setState({currentTask: {text: inputText.target.value}});
+   addTask = (event) => {
+       this.setState({currentTask: {text: event.target.value}});
    };
 
    addTaskToList = () => {
@@ -55,7 +55,6 @@ class App extends Component {
                               textDecoration: 'line-through'
                           };
                       }
-                      console.log('style', style);
                     return <Task key={task.id}
                                  id={task.id}
                                  text={task.text}
@@ -70,7 +69,9 @@ class App extends Component {
           );
     return (
       <div className="App">
-        <AddTaskForm functionOnChange={this.addTask} functionOnClick={this.addTaskToList} text={this.state.currentTask.text}/>
+        <AddTaskForm functionOnChange={this.addTask}
+                     functionOnClick={this.addTaskToList}
+                     text={this.state.currentTask.text}/>
           {tasks}
       </div>
     );
