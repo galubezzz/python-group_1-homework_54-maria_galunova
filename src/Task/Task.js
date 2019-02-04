@@ -5,8 +5,10 @@ function Task(props) {
     return(
         <div className='container'>
             <div>
-                -{props.text}-
-                <span onClick={() => {props.delete(props.id)}}><i className="far fa-trash-alt"></i></span>
+                <input type="checkbox" onClick={() => {props.done(props.id)}}/>
+                <span style={props.style}>{props.text}</span>
+                <span onChange={() => {props.delete(props.id)}}>
+                    <i className="far fa-trash-alt"></i></span>
             </div>
         </div>
     );
