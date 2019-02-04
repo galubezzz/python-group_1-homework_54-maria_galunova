@@ -23,6 +23,7 @@ class App extends Component {
         const tasks = [...this.state.tasks];
         tasks.push({id: tasks.length, text: newTask.text});
         this.setState({tasks});
+        this.setState({currentTask: {text: ''}})
    };
 
    removeTaskFromList = (taskId) => {
@@ -45,7 +46,7 @@ class App extends Component {
           );
     return (
       <div className="App">
-        <AddTaskForm functionOnChange={this.addTask} functionOnClick={this.addTaskToList} />
+        <AddTaskForm functionOnChange={this.addTask} functionOnClick={this.addTaskToList} text={this.state.currentTask.text}/>
           {tasks}
       </div>
     );
