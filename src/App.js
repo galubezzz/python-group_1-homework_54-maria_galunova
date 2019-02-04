@@ -21,7 +21,7 @@ class App extends Component {
    addTaskToList = () => {
         const newTask = this.state.currentTask;
         const tasks = [...this.state.tasks];
-        tasks.push({id: tasks.length, text: newTask.text, completed: false});
+        tasks.push({id: tasks[tasks.length-1].id+1, text: newTask.text, completed: false});
         this.setState({tasks});
         this.setState({currentTask: {text: ''}})
    };
@@ -34,15 +34,13 @@ class App extends Component {
    };
 
    markAsDone = (taskId) => {
-        const tasks = [...this.state.tasks];
-        const completedTask = {...this.state.tasks[taskId]};
-        if (completedTask.completed) {
-            completedTask.completed = false;
-        }
-        else {
-            completedTask.completed = true;
-        }
-        tasks[taskId] = completedTask;
+        const tasks = this.state.tasks.map(task => {
+           if (task.id === taskId) {
+               task.completed = !task.completed;
+           }
+           return task;
+        });
+
         this.setState({tasks});
    };
 
