@@ -6,6 +6,7 @@ function Task(props) {
         <div className='container'>
             <div>
                 -{props.text}-
+                <a href='#'><i className="far fa-trash-alt"></i></a>
             </div>
         </div>
     );
