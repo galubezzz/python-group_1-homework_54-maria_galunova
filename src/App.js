@@ -16,7 +16,6 @@ class App extends Component {
 
    addTask = (inputText) => {
        this.setState({currentTask: {text: inputText.target.value}});
-       console.log(this.state.currentTask);
    };
 
    addTaskToList = () => {
@@ -24,11 +23,13 @@ class App extends Component {
         const tasks = [...this.state.tasks];
         tasks.push({id: tasks.length, text: newTask.text});
         this.setState({tasks});
-        console.log(tasks);
    };
 
-   removeTaskFromList = () => {
-
+   removeTaskFromList = (taskId) => {
+        const tasks = [...this.state.tasks];
+        const newTasks = tasks.filter(task => task.id !== taskId);
+        console.log(newTasks);
+        this.setState({tasks: newTasks});
    }
 
   render() {
@@ -36,7 +37,7 @@ class App extends Component {
             <div>
                 {
                   this.state.tasks.map((task) => {
-                    return <Task key={task.id} text={task.text}/>
+                    return <Task key={task.id} id={task.id} text={task.text} delete={this.removeTaskFromList}/>
                     }
                   )
                 }
@@ -44,7 +45,7 @@ class App extends Component {
           );
     return (
       <div className="App">
-        <AddTaskForm functionOnChange={this.addTask} functionOnClick={this.addTaskToList}/>
+        <AddTaskForm functionOnChange={this.addTask} functionOnClick={this.addTaskToList} />
           {tasks}
       </div>
     );
